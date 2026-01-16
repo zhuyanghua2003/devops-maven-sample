@@ -28,7 +28,7 @@ spec:
               值：js|html
             - 名称: CACHE_PUBLIC_EXPIRATION
               值：3d
-          image: $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:v$BRANCH_NAME-$BUILD_NUMBER
+          image: $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:v$BUILD_NUMBER
           就绪探针:
             httpGet：
               路径：/
