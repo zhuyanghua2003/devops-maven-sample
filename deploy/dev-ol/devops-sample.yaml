@@ -3,51 +3,51 @@ kind: Deployment
 metadata:
   labels:
     app: kubesphere
-    component: ks-sample-dev
-    tier: backend
-  name: ks-sample-dev
-  namespace: kubesphere-sample-dev
-spec:
-  progressDeadlineSeconds: 600
-  replicas: 1
-  selector:
-    matchLabels:
-      app: kubesphere
-      component: ks-sample-dev
-      tier: backend
-  template:
-    元数据:
-      标签:
-        应用： kubesphere
+    组件：ks-sample-dev
+
+  名称：ks-sample-dev
+  命名空间：kubesphere-sample-dev
+规格:
+  progressDeadlineSeconds：600
+  复制品：1
+  选择器:
+    匹配标签:
+      应用：kubesphere
+      组件：ks-sample-dev
+      层级：后端
+  模板:
+    元数据：
+      标签：
+        应用：kubesphere
         组件：ks-sample-dev
         层级：后端
-    规格:
-      容器:
+    规格：
+      容器：
         - 环境:
             - 名称: CACHE_IGNORE
               值：js|html
-            - 名称: CACHE_PUBLIC_EXPIRATION
-              值：3d
-          image: $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:v$BUILD_NUMBER
-          就绪探针:
+            - 名称: 缓存公共过期时间
+
+          镜像：$REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME：v$BUILD_NUMBER
+          就绪探针：
             httpGet：
               路径：/
               端口：8080
             超时秒数：10
             失败阈值：30
-            periodSeconds：5
-          imagePullPolicy：Always
+            周期秒数：5
+          镜像拉取策略：总是
           名称：ks-样本
-          端口:
+          端口：
             - 容器端口：8080
               协议： TCP
-          资源:
-            限制:
-              cpu：300毫秒
+          资源：
+            限制：
+              CPU：300毫秒
               内存：600Mi
-            请求:
+            请求：
               中央处理器：100米
-              内存: 100Mi
+
           终止消息路径：/dev/termination-log
           终止消息策略：文件
       dnsPolicy：ClusterFirst
